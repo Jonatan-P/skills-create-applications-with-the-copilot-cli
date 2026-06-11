@@ -30,4 +30,24 @@ describe('Calculator operations', () => {
     expect(() => calc.add('a', 1)).toThrow(/Invalid number/);
     expect(() => calc.multiply(1, 'b')).toThrow(/Invalid number/);
   });
+
+  // Extended operations
+  test('modulo: 5 % 2 = 1', () => {
+    expect(calc.modulo(5, 2)).toBe(1);
+  });
+
+  test('power: 2 ^ 3 = 8', () => {
+    expect(calc.power(2, 3)).toBe(8);
+    expect(calc.power(5, 0)).toBe(1);
+    expect(calc.power(2, -1)).toBeCloseTo(0.5);
+  });
+
+  test('squareRoot: sqrt(16) = 4', () => {
+    expect(calc.squareRoot(16)).toBe(4);
+    expect(calc.squareRoot(2)).toBeCloseTo(Math.sqrt(2));
+  });
+
+  test('squareRoot of negative number throws', () => {
+    expect(() => calc.squareRoot(-4)).toThrow(/Square root of negative number/);
+  });
 });
