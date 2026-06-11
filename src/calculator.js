@@ -4,8 +4,11 @@
  * - subtraction (-)
  * - multiplication (× or *)
  * - division (÷ or /)
+ * - modulo (%)
+ * - exponentiation (power)
+ * - square root (sqrt)
  *
- * Exports: add, subtract, multiply, divide
+ * Exports: add, subtract, multiply, divide, modulo, power, squareRoot
  */
 
 function toNumber(value) {
@@ -31,9 +34,26 @@ function divide(a, b) {
   return a / b;
 }
 
+function modulo(a, b) {
+  if (b === 0) throw new RangeError('Modulo by zero');
+  return a % b;
+}
+
+function power(base, exponent) {
+  return Math.pow(base, exponent);
+}
+
+function squareRoot(n) {
+  if (n < 0) throw new RangeError('Square root of negative number');
+  return Math.sqrt(n);
+}
+
 module.exports = {
   add: (x, y) => add(toNumber(x), toNumber(y)),
   subtract: (x, y) => subtract(toNumber(x), toNumber(y)),
   multiply: (x, y) => multiply(toNumber(x), toNumber(y)),
   divide: (x, y) => divide(toNumber(x), toNumber(y)),
+  modulo: (x, y) => modulo(toNumber(x), toNumber(y)),
+  power: (x, y) => power(toNumber(x), toNumber(y)),
+  squareRoot: (x) => squareRoot(toNumber(x)),
 };
